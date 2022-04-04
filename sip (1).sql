@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2022 at 01:35 PM
+-- Generation Time: Apr 04, 2022 at 11:53 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `jadwal_perwalian` (
   `id_jadwal` int(225) NOT NULL,
+  `nidn` varchar(255) DEFAULT NULL,
   `angkatan` varchar(225) DEFAULT NULL,
   `tanggal` varchar(255) DEFAULT NULL,
   `jam` varchar(225) DEFAULT NULL,
@@ -39,9 +40,9 @@ CREATE TABLE `jadwal_perwalian` (
 -- Dumping data for table `jadwal_perwalian`
 --
 
-INSERT INTO `jadwal_perwalian` (`id_jadwal`, `angkatan`, `tanggal`, `jam`, `link`) VALUES
-(1, '2018', '2022-03-15', '16:29', 'https://meet.google.com/yuu-kxhs-txa'),
-(2, '2019', '2022-03-25', '17:02', 'https://meet.google.com/yddddddddd');
+INSERT INTO `jadwal_perwalian` (`id_jadwal`, `nidn`, `angkatan`, `tanggal`, `jam`, `link`) VALUES
+(2, NULL, '2019', '2022-03-25', '17:02', 'https://meet.google.com/yddddddddd'),
+(3, '435435435', '2018', '2022-04-06', '19:13', 'https://meet.google.com/yuu-kxhs-txa');
 
 -- --------------------------------------------------------
 
@@ -61,8 +62,8 @@ CREATE TABLE `perwalian` (
 --
 
 INSERT INTO `perwalian` (`id_perwalian`, `nidn`, `nim`, `catatan`) VALUES
-(14, '435435435', '72180222', NULL),
-(15, '435435435', '72180225', NULL),
+(14, '435435435', '72180222', 'jangan jadi orang bodohh'),
+(15, '435435435', '72180225', 'pintarhasahbshabshbdkfjhdsbfkjdsbhfdkjhsbfdkjshbfdjsfdsfdsfdsfdsfdsfdsf'),
 (16, '45456456', '72180299', NULL);
 
 -- --------------------------------------------------------
@@ -127,7 +128,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `jadwal_perwalian`
 --
 ALTER TABLE `jadwal_perwalian`
-  MODIFY `id_jadwal` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_jadwal` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `perwalian`
