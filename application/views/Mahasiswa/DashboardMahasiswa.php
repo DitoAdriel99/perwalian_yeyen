@@ -33,6 +33,7 @@
 					<div class="text-md-center text-xl-left">
 						<h6 class="mb-1"><?= $jadwal['0']->angkatan ?></h6>
 						<p class="text-muted mb-0"><?= $jadwal['0']->nidn ?></p>
+						<p class="text-muted mb-0">Tanggal : <?= $jadwal['0']->tanggal ?>, jam : <?= $jadwal['0']->jam ?></p>
 					</div>
 					<div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
 						<a href="<?= $jadwal['0']->link ?>" target="_blank" class="card-link">link</a>
