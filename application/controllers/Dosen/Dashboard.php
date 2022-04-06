@@ -51,6 +51,17 @@ class Dashboard extends CI_Controller
 
 	}
 
+	public function ViewJadwal()
+	{
+		$nidn = $this->session->userdata('nidn');
+		$jadwal['jadwal'] = $this->m->getJadwal($nidn);
+		// print_r($nidn);
+		// die;
+		$this->load->view('Template/header');
+		$this->load->view('Dosen/Jadwal',$jadwal);
+		$this->load->view('Template/footer');
+	}
+
 	public function sessions()
 	{
 		print_r($this->session->userdata());

@@ -22,5 +22,20 @@ class Dashboard_model extends CI_Model
 		$this->db->where('id_perwalian',$data['id_perwalian']);
 		$this->db->update('perwalian', $data);
 	}
+
+	public function getJadwal($nidn)
+	{
+		$query = $this->db->select('*')
+			->from('jadwal_perwalian')
+			->where('nidn',$nidn)
+			->get();
+		return $query->result();
+	}
+
+	public function getPerwalian()
+	{
+		$query = $this->db->select('*')->from('perwalian')->get();
+		return $query->result();
+	}
 	
 }

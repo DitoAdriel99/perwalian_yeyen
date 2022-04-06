@@ -28,7 +28,15 @@
 										<?php } else { ?>
 											<td><?= $row->catatan ?></td>
 										<?php }  ?>
-										
+										<?php if ($row->catatan == !null) { ?>
+											<td>
+												<div class="badge badge-outline-success">Mantap</div>
+											</td>
+										<?php } else { ?>
+											<td></td>
+										<?php }  ?>
+
+
 									</tr>
 								</form>
 							<?php endforeach; ?>
