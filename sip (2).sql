@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2022 at 11:53 AM
+-- Generation Time: Apr 11, 2022 at 06:44 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -62,9 +62,10 @@ CREATE TABLE `perwalian` (
 --
 
 INSERT INTO `perwalian` (`id_perwalian`, `nidn`, `nim`, `catatan`) VALUES
-(14, '435435435', '72180222', 'jangan jadi orang bodohh'),
+(14, '435435435', '72180222', 'mamntapppppppppppp'),
 (15, '435435435', '72180225', 'pintarhasahbshabshbdkfjhdsbfkjdsbhfdkjhsbfdkjshbfdjsfdsfdsfdsfdsfdsfdsf'),
-(16, '45456456', '72180299', NULL);
+(16, '45456456', '72180299', NULL),
+(19, '45456456', '72180111', 'tolol lu item');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,8 @@ INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `roles`, `nim`,
 (3, 'admin', 'admin@staff.ukdw.ac.id', 'admin', '3', NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'dito', 'dito@gmail', 'dito', '1', '72180225', '2018', NULL, NULL, NULL, NULL),
 (5, 'yose', 'yose@gmail', 'yose', '1', '72180299', '2019', NULL, NULL, NULL, NULL),
-(8, 'wimi', 'wimi@staff', 'wimi', '2', NULL, NULL, NULL, NULL, 45456456, '23543345345');
+(8, 'wimi', 'wimi@staff', 'wimi', '2', NULL, NULL, NULL, NULL, 45456456, '23543345345'),
+(9, 'ruendi', 'ruendi@gmail', 'ruendi', '1', '72180111', '2018', NULL, NULL, NULL, '98437593475');
 
 --
 -- Indexes for dumped tables
@@ -134,13 +136,13 @@ ALTER TABLE `jadwal_perwalian`
 -- AUTO_INCREMENT for table `perwalian`
 --
 ALTER TABLE `perwalian`
-  MODIFY `id_perwalian` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_perwalian` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
