@@ -4,7 +4,7 @@
 		<div class="card-body">
 			<h4 class="card-title">Tambah Jadwal</h4>
 			<p class="card-description"> Basic form layout </p>
-			<form class="forms-sample" method="post" action="<?php echo base_url(); ?>/Admin/Dashboard/TambahJadwal">
+			<form class="forms-sample" method="post" action="<?php echo base_url(); ?>/Admin/Jadwal/TambahJadwal">
 			<div class="form-group">
 					<label for="exampleFormControlSelect2">Pilih Dosen</label>
 					<select class="form-control" id="nidn" name="nidn">

@@ -170,6 +170,30 @@
               <span class="menu-title">Tambah KRS</span>
             </a>
           </li>
+					<li class="nav-item menu-items">
+            <a class="nav-link" href="<?= base_url('/Admin/TambahDosen/') ?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Tambah Dosen</span>
+            </a>
+          </li>
+					<li class="nav-item menu-items">
+            <a class="nav-link" href="<?= base_url('/Admin/Mahasiswa/') ?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">List Mahasiswa</span>
+            </a>
+          </li>
+					<li class="nav-item menu-items">
+            <a class="nav-link" href="<?= base_url('/Admin/Jadwal/') ?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Jadwal Perwalian</span>
+            </a>
+          </li>
 					<?php } ?>
         </ul>
       </nav>

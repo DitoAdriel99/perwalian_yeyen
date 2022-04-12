@@ -4,7 +4,7 @@
 		<div class="card-body">
 			<h4 class="card-title">Tambah Perwalian</h4>
 			<p class="card-description"> Basic form layout </p>
-			<form class="forms-sample" method="post" action="<?php echo base_url(); ?>/Admin/Dashboard/TambahMahasiswa">
+			<form class="forms-sample" method="post" action="<?php echo base_url(); ?>/Admin/Mahasiswa/TambahMahasiswa">
 				<input type="hidden" name="nim" id="nim" value="<?php echo $mahasiswa->nim; ?>" />
 				<div class="form-group">
 					<label for="exampleInputUsername1">Mahasiswa</label>
