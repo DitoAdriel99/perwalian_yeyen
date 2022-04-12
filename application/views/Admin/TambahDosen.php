@@ -26,6 +26,10 @@
 					<input type="text" class="form-control" name="no_hp" placeholder="No_hp" required>
 				</div>
 				<div class="form-group">
+					<label for="exampleInputName1">Penanggung Jawab Angkatan</label>
+					<input type="text" class="form-control" name="pj_angkatan" placeholder="Masukan Angkatan Yang di bimbing" required>
+				</div>
+				<div class="form-group">
 					<label>Foto</label>
 					<div class="input-group col-xs-12">
 					<input type="file" id="profile" name="profile">

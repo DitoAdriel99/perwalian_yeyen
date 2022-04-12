@@ -16,15 +16,6 @@ class TambahDosen_model extends CI_Model
 		return $query->result();
 	}
 
-	public function getDataMahasiswa()
-	{
-		$query = $this->db->select('*')
-			->from('users')
-			->where('roles', 1)
-			->where('status', null)
-			->get();
-		return $query->result();
-	}
 
 	public function getDataJadwal()
 	{

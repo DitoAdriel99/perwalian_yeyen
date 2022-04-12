@@ -5,7 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Corona Admin</title>
+	<title>SiP</title>
 	<!-- plugins:css -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/vendors/mdi/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/vendors/css/vendor.bundle.base.css">
@@ -28,6 +28,8 @@
 					<div class="card col-lg-4 mx-auto">
 						<div class="card-body px-5 py-5">
 							<h3 class="card-title text-left mb-3">Login</h3>
+							<p class="text-primary"><?php echo $this->session->flashdata('message'); ?></p>
+
 								<?php echo form_open(base_url() . 'login/proses_login') ?>
 
 								<div class="form-group">
@@ -47,6 +49,7 @@
 									<button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
 								</div>
 								<?= form_close() ?>
+								<p class="sign-up">Belum Punya akun Perwalian?<a href="<?= base_url().'Registrasi' ?>"> Daftar</a></p>
 						</div>
 					</div>
 				</div>

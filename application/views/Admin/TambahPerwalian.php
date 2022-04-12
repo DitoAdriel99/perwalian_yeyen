@@ -30,7 +30,7 @@
 		// console.log(x);
 		var option = '<option value="" selected>--Select Data--</option>';
 		$.ajax({
-			url: '<?= base_url() ?>Admin/Dashboard/getDataDosen/' + x,
+			url: '<?= base_url() ?>Admin/Mahasiswa/getDataDosen/' + x,
 			type: 'json',
 			success: function(result) {
 				console.log(result)

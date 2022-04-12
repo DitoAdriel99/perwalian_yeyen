@@ -20,13 +20,9 @@ class TambahDosen extends CI_Controller
 	public function index()
 	{
 		$queryGetDataDosen  = $this->m->getDataDosen();
-		$queryGetDataMahasiswa  = $this->m->getDataMahasiswa();
-		$queryGetDataJadwal = $this->m->getDataJadwal();
 
 		$data = array(
 			'dosen' => $queryGetDataDosen,
-			'mahasiswa' => $queryGetDataMahasiswa,
-			'jadwal' => $queryGetDataJadwal
 		);
 		$this->load->view('Template/header');
 		$this->load->view('Admin/V_Dosen', $data);
@@ -47,6 +43,7 @@ class TambahDosen extends CI_Controller
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$no_hp = $this->input->post('no_hp');
+		$pj = $this->input->post('pj_angkatan');
 
 		$config['upload_path']   = './gambar_dosen/';
 		$config['allowed_types'] = 'gif|jpg|png|pdf';
@@ -76,6 +73,7 @@ class TambahDosen extends CI_Controller
 			'password' => $password,
 			'no_hp' => $no_hp,
 			'roles' => 2,
+			'pj_angkatan' => $pj,
 			'profile' => $dataUpload['upload_data']['file_name'],
 		);
 

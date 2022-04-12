@@ -1,4 +1,6 @@
 <h1>tambah perwalian</h1>
+<code><?php echo $this->session->flashdata('message'); ?></code>
+<p></p> 
 <div class="col-md-6 grid-margin stretch-card">
 	<div class="card">
 		<div class="card-body">
@@ -41,7 +43,7 @@
 		// console.log(x);
 		var option = '<option value="" selected>--Select Data--</option>';
 		$.ajax({
-			url: '<?= base_url() ?>Admin/Dashboard/getDataDosen/' + x,
+			url: '<?= base_url() ?>Admin/Jadwal/getDataDosen/' + x,
 			type: 'json',
 			success: function(result) {
 				console.log(result)
