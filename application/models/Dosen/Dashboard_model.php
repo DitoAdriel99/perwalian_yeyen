@@ -32,6 +32,16 @@ class Dashboard_model extends CI_Model
 		return $query->result();
 	}
 
+	public function getId($nim)
+	{
+		$query = $this->db->select('tp.*,tu.*')
+			->from('perwalian tp')
+			->join('users tu', 'tu.nim = tp.nim')
+			->where('tp.nim', $nim)
+			->get();
+		return $query->row();
+	}
+
 	public function getPerwalian()
 	{
 		$query = $this->db->select('*')->from('perwalian')->get();

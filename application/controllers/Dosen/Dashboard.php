@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller
 		$this->load->model('dosen/Dashboard_model', 'm');
 		$this->load->library('form_validation');
 		$this->load->library('session');
-		$this->load->helper(array('form', 'url'));
+		$this->load->helper(array('form', 'url','string'));
 
 		if ($this->session->userdata('roles') != "2") {
 			redirect(base_url());
@@ -30,6 +30,18 @@ class Dashboard extends CI_Controller
 		$this->load->view('Dosen/DashboardDosen',$queryMahasiswaPerwalian);
 		$this->load->view('Template/footer');
 
+	}
+
+	public function ViewTambahCatatan($nim)
+	{
+		// $test = random_string('numeric', 1);
+		// echo $test;
+		// die;
+		$data['data'] = $this->m->getId($nim);
+		
+		$this->load->view('Template/header');
+		$this->load->view('Dosen/V_TambahCatatan',$data);
+		$this->load->view('Template/footer');
 	}
 
 	public function TambahCatatan()

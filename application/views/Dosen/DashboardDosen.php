@@ -9,7 +9,6 @@
 							<tr>
 								<th> NIM </th>
 								<th> Nama </th>
-								<th> Catatan </th>
 								<th> Aksi</th>
 							</tr>
 						</thead>
@@ -22,21 +21,9 @@
 										<input type="hidden" name="id_perwalian" value="<?= $row->id_perwalian ?>">
 										<td><?= $row->nim ?> </td>
 										<td><?= $row->username ?></td>
-										<?php if ($row->catatan == null) { ?>
-											<td><input type="text" class="form-control" id="catatan" name="catatan" placeholder="Masukan Catatan"></td>
-											<td><button type="submit" class="btn btn-primary btn-fw">Send</button></td>
-										<?php } else { ?>
-											<td><?= $row->catatan ?></td>
-										<?php }  ?>
-										<?php if ($row->catatan == !null) { ?>
-											<td>
-												<div class="badge badge-outline-success">Mantap</div>
-											</td>
-										<?php } else { ?>
-											<td></td>
-										<?php }  ?>
-
-
+										<td>
+											<a href="<?= base_url(). 'Dosen/Dashboard/ViewTambahCatatan/' . $row->nim ?>">Tambah Catatan</a>
+										</td>
 									</tr>
 								</form>
 							<?php endforeach; ?>
