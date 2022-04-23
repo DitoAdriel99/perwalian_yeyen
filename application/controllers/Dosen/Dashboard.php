@@ -44,9 +44,10 @@ class Dashboard extends CI_Controller
 		$this->load->view('Template/footer');
 	}
 
-	public function TambahCatatan()
+	public function TambahCatatan($id_perwalian)
 	{
-		$id_perwalian = $this->input->post('id_perwalian');
+		// echo $id_perwalian;
+		// die;
 		$catatan = $this->input->post('catatan');
 
 		$data = array(
@@ -54,8 +55,10 @@ class Dashboard extends CI_Controller
 			'catatan' => $catatan,
 		);
 
+		// print_r($data);
+		// die;
 		$this->m->inputCatatan($data);
-		redirect('Dosen/Dashboard');
+		redirect('Dosen/Dashboard/');
 
 		// print_r($data);
 		// die;

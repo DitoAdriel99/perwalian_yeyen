@@ -19,8 +19,12 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
+		$monitoring['data'] = $this->m->getData();
+
+		// print_r($monitoring);
+		// die;
 		$this->load->view('Template/header');
-		$this->load->view('Admin/DashboardAdmin');
+		$this->load->view('Admin/DashboardAdmin',$monitoring);
 		$this->load->view('Template/footer');
 	}
 
