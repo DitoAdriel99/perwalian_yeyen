@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2022 at 12:49 AM
+-- Generation Time: Apr 23, 2022 at 11:36 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -63,9 +63,8 @@ CREATE TABLE `perwalian` (
 --
 
 INSERT INTO `perwalian` (`id_perwalian`, `nidn`, `nim`, `catatan`) VALUES
-(25, '435435435', '72180222', NULL),
-(26, '657657657', '72180225', NULL),
-(27, '123456789', '7210212', NULL);
+(30, '435435435', '72180225', 'Kok ipk mu rendah '),
+(31, '435435435', '72180222', 'kamu harus naikin lagi ipk nya yaaa');
 
 -- --------------------------------------------------------
 
@@ -80,6 +79,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `roles` varchar(255) DEFAULT NULL,
   `nim` varchar(225) DEFAULT NULL,
+  `ipk` varchar(255) DEFAULT NULL,
   `angkatan` varchar(255) DEFAULT NULL,
   `krs_prediksi` varchar(255) DEFAULT NULL,
   `status_perwalian` int(2) DEFAULT NULL,
@@ -94,14 +94,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `roles`, `nim`, `angkatan`, `krs_prediksi`, `status_perwalian`, `nidn`, `pj_angkatan`, `status_jp`, `no_hp`, `profile`) VALUES
-(2, 'dosen', 'dosen@staff.ukdw.ac.id', 'dosen', '2', NULL, NULL, NULL, NULL, 435435435, '2018', 1, NULL, '12_-Wimmie5.png'),
-(3, 'admin', 'admin@staff.ukdw.ac.id', 'admin', '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18, 'bu yetli', 'yetli@staff.ukdw.ac.id', 'yetli', '2', NULL, NULL, NULL, NULL, 123456789, '2020', 1, 'uyuyuyuyu', '5_-Yetli-Oslan9.png'),
-(19, 'Argo', 'admin@si.ukdw.ac.id', 'argo', '2', NULL, NULL, NULL, NULL, 657657657, '2019', 1, '34456456', '5_-Yetli-Oslan10.png'),
-(33, 'yeyen', 'yeyen@si.ukdw.ac.id', 'yeyen', '1', '72180222', '2018', NULL, NULL, NULL, NULL, NULL, '9084357', NULL),
-(34, 'dito', 'ditoadriel@gmail.com', 'dito', '1', '72180225', '2019', NULL, NULL, NULL, NULL, NULL, '43543543', NULL),
-(35, 'ruendi', 'ruendi@gmail', 'ruendi', '1', '7210212', '2020', NULL, NULL, NULL, NULL, NULL, '456456456', NULL);
+INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `roles`, `nim`, `ipk`, `angkatan`, `krs_prediksi`, `status_perwalian`, `nidn`, `pj_angkatan`, `status_jp`, `no_hp`, `profile`) VALUES
+(2, 'dosen', 'dosen@staff.ukdw.ac.id', 'dosen', '2', NULL, NULL, NULL, NULL, NULL, 435435435, '2018', 1, NULL, '12_-Wimmie5.png'),
+(3, 'admin', 'admin@staff.ukdw.ac.id', 'admin', '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 'bu yetli', 'yetli@staff.ukdw.ac.id', 'yetli', '2', NULL, NULL, NULL, NULL, NULL, 123456789, '2020', 1, 'uyuyuyuyu', '5_-Yetli-Oslan9.png'),
+(19, 'Argo', 'admin@si.ukdw.ac.id', 'argo', '2', NULL, NULL, NULL, NULL, NULL, 657657657, '2019', 1, '34456456', '5_-Yetli-Oslan10.png'),
+(38, 'dito', 'ditoadriel@gmail.com', 'dito', '1', '72180225', '9', '2018', NULL, NULL, NULL, NULL, NULL, '123444', 'wowo.jpg'),
+(39, 'Kerne Kezia', 'keren@si.ukdw.ac.id', 'keren', '1', '72180222', '2', '2018', NULL, NULL, NULL, NULL, NULL, '24354353465', 'LOGINQHMH.jpg');
 
 --
 -- Indexes for dumped tables
@@ -139,13 +138,13 @@ ALTER TABLE `jadwal_perwalian`
 -- AUTO_INCREMENT for table `perwalian`
 --
 ALTER TABLE `perwalian`
-  MODIFY `id_perwalian` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_perwalian` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
