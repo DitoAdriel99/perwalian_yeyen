@@ -8,12 +8,15 @@
 			<p class="card-text">Catatan</p>
 			<?php if($data->catatan == null){ ?>
 			<textarea class="form-control" name="catatan" rows="4"></textarea>
-			<?php }else{ ?>
-				<p class="card-text"><?= $data->catatan ?></p>
-
-				<?php } ?>
+			
 			<br>
 			<button class="btn btn-primary">Tambahkan Catatan</button>
+			<?php }else{ ?>
+				<p class="card-text"><?= $data->catatan ?></p>
+			<br>
+			<a href="<?= base_url() . 'Dosen/Dashboard/HapusCatatan/'.$data->id_perwalian ?>" class="btn btn-danger">Hapus Catatan</a>
+
+				<?php } ?>
 		</div>
 	</form>
 </div>

@@ -55,6 +55,36 @@ class Dashboard extends CI_Controller
 			'catatan' => $catatan,
 		);
 
+		//start config
+		$config['protocol']  = 'smtp';
+		$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_user'] = 'skripsidito@gmail.com';
+		$config['smtp_pass'] = 'pastilulus';
+		$config['smtp_port'] = 465;
+		$config['charset']   = 'utf-8';
+		$config['mailtype']  = 'html';
+		$config['newline']   = "\r\n";
+
+		$this->load->library('email', $config);
+		$this->email->initialize($config);
+		//end config
+
+		$email = $this->m->getEmail($id_perwalian);
+		// print_r($email);
+		// die;
+
+
+		$this->email->from('skripsidito@gmail.com','Dosen Wali');
+		$this->email->to($email->email);
+		$this->email->subject('Catatan Perwalian,'.$email->nim);
+		$this->email->message($data['catatan']);
+
+		if ($this->email->send()) {
+			echo "berhasil";
+		} else {
+			echo "gagal";
+		}
+
 		// print_r($data);
 		// die;
 		$this->m->inputCatatan($data);
@@ -63,6 +93,18 @@ class Dashboard extends CI_Controller
 		// print_r($data);
 		// die;
 
+
+	}
+
+	public function HapusCatatan($id_perwalian)
+	{
+		$data = array(
+			'id_perwalian' => $id_perwalian,
+			'catatan' => null
+		);
+
+		$this->m->HapusCatatan($data,'perwalian');
+		redirect('Dosen/Dashboard/');
 
 	}
 

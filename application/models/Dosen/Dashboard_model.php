@@ -17,10 +17,26 @@ class Dashboard_model extends CI_Model
 		return $query->result();
 	}
 
+	public function getEmail($id_perwalian)
+	{
+		$query = $this->db->select('tp.*, tu.*')
+			->from('perwalian tp')
+			->join('users tu', 'tu.nim = tp.nim')
+			->where('id_perwalian', $id_perwalian)
+			->get();
+		return $query->row();
+	}
+
 	public function InputCatatan($data)
 	{
 		$this->db->where('id_perwalian',$data['id_perwalian']);
 		$this->db->update('perwalian', $data);
+	}
+
+	public function HapusCatatan($data, $table)
+	{
+		$this->db->where('id_perwalian', $data['id_perwalian']);
+		$this->db->update($table, $data);
 	}
 
 	public function getJadwal($nidn)
