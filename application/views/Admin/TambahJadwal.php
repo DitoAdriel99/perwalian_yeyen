@@ -9,25 +9,25 @@
 			<form class="forms-sample" method="post" action="<?php echo base_url(); ?>/Admin/Jadwal/TambahJadwal">
 			<div class="form-group">
 					<label for="exampleFormControlSelect2">Pilih Dosen</label>
-					<select class="form-control" id="nidn" name="nidn">
+					<select class="form-control" id="nidn" name="nidn" required>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputUsername1">Angkatan</label>
-					<input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Masukan Angkatan">
+					<input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Masukan Angkatan" required>
 				</div>
 				<div class="form-group">
 					<label for="tanggal">Tanggal & Waktu</label>
-					<input type="date" id="tanggal" name="tanggal">
+					<input type="date" id="tanggal" name="tanggal" required>
 				</div>
 				<div class="form-group">
 					<label for="jam">Pilih Jam</label>
-					<input type="time" id="jam" name="jam">
+					<input type="time" id="jam" name="jam" required>
 				</div>
 
 				<div class="form-group">
 					<label for="exampleInputUsername1">Link</label>
-					<input type="text" class="form-control" id="link" name="link" placeholder="Masukan Link">
+					<input type="text" class="form-control" id="link" name="link" placeholder="Masukan Link" required>
 				</div>
 				<button type="submit" class="btn btn-primary mr-2">Submit</button>
 				<button class="btn btn-dark">Cancel</button>
