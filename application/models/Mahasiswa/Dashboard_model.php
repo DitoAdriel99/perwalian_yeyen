@@ -26,6 +26,12 @@ class Dashboard_model extends CI_Model
 		return $query->result();
 	}
 
+	public function cekJadwal()
+	{
+		$query = $this->db->select('*')->from('jadwal_perwalian')->get();
+		return $query->num_rows();
+	}
+
 	
 	
 }

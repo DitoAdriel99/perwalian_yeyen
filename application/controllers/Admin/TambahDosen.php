@@ -39,49 +39,60 @@ class TambahDosen extends CI_Controller
 	public function add()
 	{
 		$nidn = $this->input->post('nidn');
-		$username = $this->input->post('username');
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
-		$no_hp = $this->input->post('no_hp');
 		$pj = $this->input->post('pj_angkatan');
+		$password = $this->input->post('password');
 
-		$config['upload_path']   = './gambar_dosen/';
-		$config['allowed_types'] = 'gif|jpg|png|pdf';
-		$config['max_size']      = 9000;
-		$config['max_width']     = 9000;
-		$config['max_height']    = 9000;
-		$this->load->library('upload', $config);
+		$sql_nidn = $this->db->query("SELECT nidn FROM dosen WHERE nidn='$nidn'");
+		$ceknidn = $sql_nidn->num_rows();
+		if ($ceknidn > 0) {
+			$dosen = $this->db->query("SELECT * FROM dosen WHERE nidn='$nidn'");
+			$biodata = $dosen->row();
 
-		if (!$this->upload->do_upload('profile')) {
-			$error = $this->upload->display_errors();
-			// $this->load->view('upload_form', $error);
-			$result = array(
-				'error' => 1,
-				'data' => $error
+			// print_r($biodata);
+			// die;
+			// print_r($ambil);
+			$config['upload_path']   = './gambar_dosen/';
+			$config['allowed_types'] = 'gif|jpg|png|pdf';
+			$config['max_size']      = 9000;
+			$config['max_width']     = 9000;
+			$config['max_height']    = 9000;
+			$this->load->library('upload', $config);
+	
+			if (!$this->upload->do_upload('profile')) {
+				$error = $this->upload->display_errors();
+				// $this->load->view('upload_form', $error);
+				$result = array(
+					'error' => 1,
+					'data' => $error
+				);
+				echo json_encode($result);
+				exit;
+			} else {
+				$dataUpload = array('upload_data' => $this->upload->data());
+				// $image = $dataUpload['upload_data']['file_name'];
+			}
+	
+			$data = array(
+				'nidn' => $nidn,
+				'username' => $biodata->nama_dosen,
+				'email' => $biodata->email,
+				'password' => $password,
+				'no_hp' => $biodata->no_hp,
+				'roles' => 2,
+				'pj_angkatan' => $pj,
+				'profile' => $dataUpload['upload_data']['file_name'],
 			);
-			echo json_encode($result);
-			exit;
-		} else {
-			$dataUpload = array('upload_data' => $this->upload->data());
-			// $image = $dataUpload['upload_data']['file_name'];
+	
+			// print_r($data);
+			// die;
+	
+			$this->m->insertData($data, 'users');
+			redirect('Admin/TambahDosen/');
+		}else{
+			$this->session->set_flashdata('message', 'Nidn Tidak ada Harap Diperiksa kembali');
+			redirect('Admin/TambahDosen/ViewTambahDosen');
 		}
 
-		$data = array(
-			'nidn' => $nidn,
-			'username' => $username,
-			'email' => $email,
-			'password' => $password,
-			'no_hp' => $no_hp,
-			'roles' => 2,
-			'pj_angkatan' => $pj,
-			'profile' => $dataUpload['upload_data']['file_name'],
-		);
-
-		// print_r($data);
-		// die;
-
-		$this->m->insertData($data, 'users');
-		redirect('Admin/TambahDosen/');
 	}
 
 	public function destroy($nidn)

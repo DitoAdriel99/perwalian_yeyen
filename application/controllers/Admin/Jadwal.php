@@ -50,34 +50,28 @@ class Jadwal extends CI_Controller
 
 	public function TambahJadwal()
 	{
-		$angkatan = $this->input->post('angkatan');
 		$tanggal = $this->input->post('tanggal');
 		$nidn = $this->input->post('nidn');
 		$jam = $this->input->post('jam');
 		$link = $this->input->post('link');
-		$sql = $this->db->query("SELECT angkatan FROM jadwal_perwalian where angkatan='$angkatan'");
-		$cek_nik = $sql->num_rows();
-		if ($cek_nik > 0) {
-			$this->session->set_flashdata('message', 'Tahun Angkatan Sudah Diisi! Harap Cari Tahun yang Lain!');
-			redirect('Admin/Jadwal/viewTambahJadwal');
-		} else {
-			$data = array(
-				'angkatan' => $angkatan,
-				'tanggal' => $tanggal,
-				'jam' => $jam,
-				'nidn' => $nidn,
-				'link' => $link
-			);
+		$sql = $this->db->query("SELECT pj_angkatan FROM users where nidn='$nidn'");
+		$angkatan = $sql->row()->pj_angkatan;
+		$data = array(
+			'angkatan' => $angkatan,
+			'tanggal' => $tanggal,
+			'jam' => $jam,
+			'nidn' => $nidn,
+			'link' => $link
+		);
 
-			$sts = array(
-				'nidn' => $nidn,
-				'status_jp' => 1
-			);
+		$sts = array(
+			'nidn' => $nidn,
+			'status_jp' => 1
+		);
 
-			$this->m->insertJadwal($data, 'jadwal_perwalian');
-			$this->m->ubahStatus($sts, 'users');
-			redirect('Admin/Jadwal');
-		}
+		$this->m->insertJadwal($data, 'jadwal_perwalian');
+		$this->m->ubahStatus($sts, 'users');
+		redirect('Admin/Jadwal');
 	}
 
 	public function sessions()

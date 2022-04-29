@@ -13,10 +13,6 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputUsername1">Angkatan</label>
-					<input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Masukan Angkatan" required>
-				</div>
-				<div class="form-group">
 					<label for="tanggal">Tanggal & Waktu</label>
 					<input type="date" id="tanggal" name="tanggal" required>
 				</div>

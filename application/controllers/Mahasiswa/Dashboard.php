@@ -24,12 +24,15 @@ class Dashboard extends CI_Controller
 		$queryPerwalian = $this->m->getDataPerwalian($nim);
 		$queryJadwal = $this->m->getJadwalPerwalian($angkatan);
 
-		// print_r($queryJadwal);
+		$cekJadwal = $this->m->cekJadwal();
+
+		// print_r($cekJadwal);
 		// die;
 
 		$data = array(
 			'perwalian' => $queryPerwalian,
-			'jadwal' => $queryJadwal
+			'jadwal' => $queryJadwal,
+			'cek' => $cekJadwal,
 		);
 
 		// print_r($data);
