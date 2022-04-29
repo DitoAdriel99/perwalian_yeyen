@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2022 at 11:36 AM
+-- Generation Time: Apr 29, 2022 at 11:21 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `sip`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dosen`
+--
+
+CREATE TABLE `dosen` (
+  `id_dosen` int(100) NOT NULL,
+  `nama_dosen` varchar(225) DEFAULT NULL,
+  `nidn` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `no_hp` varchar(225) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dosen`
+--
+
+INSERT INTO `dosen` (`id_dosen`, `nama_dosen`, `nidn`, `email`, `no_hp`) VALUES
+(1, 'Gabriel Indra Widi Tamtama, S.Kom., M.Kom.', '9348345', 'sdjfsdkfb', '45645'),
+(2, 'Drs. Wimmie Handiwidjojo, MIT', '11111111', 'sdfdsf', '345'),
+(3, 'Yetli Oslan, S.Kom., M.T', '222222222', 'sdfsdf', '54645'),
+(4, 'Drs. Jong Jek Siang, M.Sc.', '444444444', 'dsfsdf', '45654');
 
 -- --------------------------------------------------------
 
@@ -41,9 +65,7 @@ CREATE TABLE `jadwal_perwalian` (
 --
 
 INSERT INTO `jadwal_perwalian` (`id_jadwal`, `nidn`, `angkatan`, `tanggal`, `jam`, `link`) VALUES
-(13, '435435435', '2018', '2022-03-27', '03:13', 'https://meet.google.com/yuu-kxhs-txa'),
-(15, '123456789', '2019', '2022-05-03', '03:56', 'https://meet.google.com/yuu-kxhs-txa'),
-(16, '657657657', '2020', '2022-04-20', '03:56', 'https://meet.google.com/yuu-kxhs-txa');
+(19, '9348345', '2001', '2022-04-12', '19:17', 'https://meet.google.com/yuu-kxhs-txa');
 
 -- --------------------------------------------------------
 
@@ -63,8 +85,7 @@ CREATE TABLE `perwalian` (
 --
 
 INSERT INTO `perwalian` (`id_perwalian`, `nidn`, `nim`, `catatan`) VALUES
-(30, '435435435', '72180225', 'Kok ipk mu rendah '),
-(31, '435435435', '72180222', 'kamu harus naikin lagi ipk nya yaaa');
+(32, '9348345', '72180225', NULL);
 
 -- --------------------------------------------------------
 
@@ -95,16 +116,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `roles`, `nim`, `ipk`, `angkatan`, `krs_prediksi`, `status_perwalian`, `nidn`, `pj_angkatan`, `status_jp`, `no_hp`, `profile`) VALUES
-(2, 'dosen', 'dosen@staff.ukdw.ac.id', 'dosen', '2', NULL, NULL, NULL, NULL, NULL, 435435435, '2018', 1, NULL, '12_-Wimmie5.png'),
 (3, 'admin', 'admin@staff.ukdw.ac.id', 'admin', '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18, 'bu yetli', 'yetli@staff.ukdw.ac.id', 'yetli', '2', NULL, NULL, NULL, NULL, NULL, 123456789, '2020', 1, 'uyuyuyuyu', '5_-Yetli-Oslan9.png'),
-(19, 'Argo', 'admin@si.ukdw.ac.id', 'argo', '2', NULL, NULL, NULL, NULL, NULL, 657657657, '2019', 1, '34456456', '5_-Yetli-Oslan10.png'),
-(38, 'dito', 'ditoadriel@gmail.com', 'dito', '1', '72180225', '9', '2018', NULL, NULL, NULL, NULL, NULL, '123444', 'wowo.jpg'),
-(39, 'Kerne Kezia', 'keren@si.ukdw.ac.id', 'keren', '1', '72180222', '2', '2018', NULL, NULL, NULL, NULL, NULL, '24354353465', 'LOGINQHMH.jpg');
+(40, 'Gabriel Indra Widi Tamtama, S.Kom., M.Kom.', 'sdjfsdkfb', 'test', '2', NULL, NULL, NULL, NULL, NULL, 9348345, '2001', 1, '45645', 'profile.jpg'),
+(41, 'dito', 'ditoadriel@gmail.com', 'dito', '1', '72180225', '6', '2001', NULL, NULL, NULL, NULL, NULL, '056549', 'profile.jpg'),
+(42, 'Drs. Jong Jek Siang, M.Sc.', 'dsfsdf', 'test', '2', NULL, NULL, NULL, NULL, NULL, 444444444, '2018', NULL, '45654', 'profile1.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `dosen`
+--
+ALTER TABLE `dosen`
+  ADD PRIMARY KEY (`id_dosen`);
 
 --
 -- Indexes for table `jadwal_perwalian`
@@ -129,22 +154,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `dosen`
+--
+ALTER TABLE `dosen`
+  MODIFY `id_dosen` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `jadwal_perwalian`
 --
 ALTER TABLE `jadwal_perwalian`
-  MODIFY `id_jadwal` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_jadwal` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `perwalian`
 --
 ALTER TABLE `perwalian`
-  MODIFY `id_perwalian` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_perwalian` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
