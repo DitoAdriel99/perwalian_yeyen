@@ -71,19 +71,11 @@
             </a>
           </li>
 					<li class="nav-item menu-items">
-            <a class="nav-link" href="<?= base_url('/Mahasiswa/Dashboard/ViewJadwalPerwalian') ?>">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Jadwal Perwalian</span>
-            </a>
-          </li>
-					<li class="nav-item menu-items">
             <a class="nav-link" href="<?= base_url('/Mahasiswa/DosenWali/') ?>">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
-              <span class="menu-title">Dosen Wali</span>
+              <span class="menu-title">Info Dosen Wali</span>
             </a>
           </li>
 					<?php }elseif($this->session->userdata('roles') == 2){?>
@@ -120,6 +112,14 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+					<li class="nav-item menu-items">
+						<a class="nav-link" href="<?= base_url('/Admin/Mahasiswa/') ?>">
+							<span class="menu-icon">
+								<i class="mdi mdi-file-document-box"></i>
+							</span>
+							<span class="menu-title">Mahasiswa</span>
+						</a>
+					</li>
           <!-- <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
@@ -138,38 +138,30 @@
               </ul>
             </div>
           </li> -->
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="<?= base_url('/Admin/Krs') ?>">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-              <span class="menu-title">Tambah KRS</span>
-            </a>
-          </li>
 					<li class="nav-item menu-items">
-            <a class="nav-link" href="<?= base_url('/Admin/TambahDosen/') ?>">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-              <span class="menu-title">Tambah Dosen</span>
-            </a>
-          </li>
+						<a class="nav-link" href="<?= base_url('/Admin/TambahDosen/') ?>">
+							<span class="menu-icon">
+								<i class="mdi mdi-file-document-box"></i>
+							</span>
+							<span class="menu-title">Dosen</span>
+						</a>
+					</li>
 					<li class="nav-item menu-items">
-            <a class="nav-link" href="<?= base_url('/Admin/Mahasiswa/') ?>">
+						<a class="nav-link" href="<?= base_url('/Admin/Jadwal/') ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-              <span class="menu-title">List Mahasiswa</span>
-            </a>
-          </li>
-					<li class="nav-item menu-items">
-            <a class="nav-link" href="<?= base_url('/Admin/Jadwal/') ?>">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
+								<i class="mdi mdi-file-document-box"></i>
               </span>
               <span class="menu-title">Jadwal Perwalian</span>
             </a>
           </li>
+					<li class="nav-item menu-items">
+						<a class="nav-link" href="<?= base_url('/Admin/Krs') ?>">
+							<span class="menu-icon">
+								<i class="mdi mdi-file-document-box"></i>
+							</span>
+							<span class="menu-title">Krs Prediksi</span>
+						</a>
+					</li>
 					<?php } ?>
         </ul>
       </nav>

@@ -23,6 +23,9 @@ class Dashboard extends CI_Controller
 		$angkatan = $this->session->userdata('angkatan');
 		$queryPerwalian = $this->m->getDataPerwalian($nim);
 		$queryJadwal = $this->m->getJadwalPerwalian($angkatan);
+		$queryUser = $this->m->getUser($nim);
+		// print_r($queryUser);
+		// die;
 
 		$cekJadwal = $this->m->cekJadwal();
 
@@ -33,6 +36,7 @@ class Dashboard extends CI_Controller
 			'perwalian' => $queryPerwalian,
 			'jadwal' => $queryJadwal,
 			'cek' => $cekJadwal,
+			'user' => $queryUser,
 		);
 
 		// print_r($data);

@@ -32,6 +32,12 @@ class Dashboard_model extends CI_Model
 		return $query->num_rows();
 	}
 
+	public function getUser($nim)
+	{
+		$query = $this->db->select('*')->from('users')->where('nim',$nim)->get();
+		return $query->result();
+	}
+
 	
 	
 }

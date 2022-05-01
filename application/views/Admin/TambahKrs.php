@@ -18,7 +18,7 @@
 						<tbody>
 
 							<?php foreach ($mahasiswa as $row) : ?>
-								<form class="forms-sample" method="post" action="<?php echo base_url(); ?>Admin/Dashboard/UploadKrs" enctype="multipart/form-data">
+								<form class="forms-sample" method="post" action="<?php echo base_url(); ?>Admin/Krs/UploadKrs" enctype="multipart/form-data">
 
 									<tr>
 										<td><?= $row->nim ?> <input type="hidden" name="nim" value="<?= $row->nim ?>"></td>
