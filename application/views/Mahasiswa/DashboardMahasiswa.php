@@ -1,7 +1,6 @@
 <h1>Selamat Datang, <?= $this->session->userdata('username'); ?></h1>
 <div class="row">
 	<?php if ($perwalian['0']->catatan == null) { ?>
-
 		<div class="card" style="width: 18rem;">
 			<div class="card-body">
 				<h5 class="card-title">Tidak Ada Catatan</h5>
@@ -18,7 +17,7 @@
 		</div>
 	<?php } ?>
 
-	<?php if ($cek < 1) { ?>
+	<?php if ($cek < 1 || $jadwal == false) { ?>
 		<div class="col-md-4 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">

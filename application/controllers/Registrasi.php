@@ -28,11 +28,12 @@ class Registrasi extends CI_Controller
 		$nim = $this->input->post('nim');
 		$username = $this->input->post('username');
 		$email = $this->input->post('email');
-		$angkatan = $this->input->post('angkatan');
 		$no_hp = $this->input->post('no_hp');
 		$password = $this->input->post('password');
 		$ipk = random_string('numeric', 1);
-
+		
+		$tahun = substr($nim,2,2);
+		$angkatan = "20".$tahun;
 
 		$sql_nim = $this->db->query("SELECT nim FROM users where nim='$nim'");
 		$cek = $sql_nim->num_rows();

@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -14,6 +15,8 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
+		// echo substr("72180225",2,2)."<br>";
+		// die;
 		$this->load->view('viewLogin');
 	}
 
@@ -21,11 +24,11 @@ class Login extends CI_Controller {
 	{
 		$user = $this->input->post('email');
 		$pass = $this->input->post('password');
-		
-		$cekLogin = $this->m->login($user,$pass);
+
+		$cekLogin = $this->m->login($user, $pass);
 
 		if ($cekLogin) {
-			foreach($cekLogin as $row);
+			foreach ($cekLogin as $row);
 			$this->session->set_userdata('id_user', $row->id_user);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('no_hp', $row->no_hp);
@@ -35,23 +38,22 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('email', $row->email);
 			$this->session->set_userdata('roles', $row->roles);
 
-			if ($this->session->userdata('roles')==('1')) {
+			if ($this->session->userdata('roles') == ('1')) {
 				redirect('Mahasiswa/Dashboard');
-			}elseif ($this->session->userdata('roles')==('2')) {
+			} elseif ($this->session->userdata('roles') == ('2')) {
 				redirect('Dosen/Dashboard');
-			}elseif ($this->session->userdata('roles')==('3')) {
+			} elseif ($this->session->userdata('roles') == ('3')) {
 				redirect('Admin/Dashboard');
 			}
-		}else{
+		} else {
 			$data['pesan'] = "cek";
-			$this->load->view('viewLogin',$data);
+			$this->load->view('viewLogin', $data);
 		}
 	}
-	
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
 		redirect(base_url());
 	}
-	
 }
