@@ -1,11 +1,10 @@
-<h1>tambah perwalian</h1>
+<h1>Tambah Jadwal Perwalian</h1>
 <code><?php echo $this->session->flashdata('message'); ?></code>
 <p></p> 
 <div class="col-md-6 grid-margin stretch-card">
 	<div class="card">
 		<div class="card-body">
 			<h4 class="card-title">Tambah Jadwal</h4>
-			<p class="card-description"> Basic form layout </p>
 			<form class="forms-sample" method="post" action="<?php echo base_url(); ?>/Admin/Jadwal/TambahJadwal">
 			<div class="form-group">
 					<label for="exampleFormControlSelect2">Pilih Dosen</label>

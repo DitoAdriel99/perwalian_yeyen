@@ -49,4 +49,32 @@ class Jadwal_model extends CI_Model
 		$this->db->where('nidn', $sts['nidn']);
 		$this->db->update('users', $sts);
 	}
+
+	public function UbahJadwal($id_jadwal)
+	{
+		$query = $this->db->select('*')
+			->from('jadwal_perwalian')
+			->where('id_jadwal',$id_jadwal)
+			->get();
+			return $query->result();
+	}
+
+	public function Update ($data)
+	{
+		$this->db->where('id_jadwal',$data['id_jadwal']);
+		$this->db->update('jadwal_perwalian',$data);
+	}
+
+	public function delete($where)
+	{
+		$this->db->where($where);
+		$this->db->delete('jadwal_perwalian');
+	}
+
+	public function hapusJp($data)
+	{
+		$this->db->where('nidn', $data['nidn']);
+		$this->db->update('users',$data);
+	}
+
 }

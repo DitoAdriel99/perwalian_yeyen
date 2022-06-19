@@ -22,15 +22,12 @@ class Jadwal extends CI_Controller
 		$queryGetDataDosen  = $this->m->getDataDosen();
 		$queryGetDataMahasiswa  = $this->m->getDataMahasiswa();
 		$queryGetDataJadwal = $this->m->getDataJadwal();
-
 		$data = array(
 			'dosen' => $queryGetDataDosen,
 			'mahasiswa' => $queryGetDataMahasiswa,
 			'jadwal' => $queryGetDataJadwal
 		);
-		// print_r($data);
-		// die();
-
+		
 		$this->load->view('Template/header');
 		$this->load->view('Admin/V_Jadwal', $data);
 		$this->load->view('Template/footer');
@@ -73,9 +70,56 @@ class Jadwal extends CI_Controller
 		$this->m->ubahStatus($sts, 'users');
 		redirect('Admin/Jadwal');
 	}
+	public function ViewEditJadwal($id_jadwal)
+	{
+		$data['jadwal'] = $this->m->UbahJadwal($id_jadwal);
+		$this->load->view('Template/header');
+		$this->load->view('Admin/EditJadwal',$data);
+		$this->load->view('Template/footer');
+	}
+
+	public function EditJadwal()
+	{
+		$id_jadwal = $this->input->post('id_jadwal');
+		$tanggal = $this->input->post('tanggal');
+		$jam = $this->input->post('jam');
+		$link = $this->input->post('link');
+
+		$data = array(
+			'id_jadwal' => $id_jadwal,
+			'tanggal' => $tanggal,
+			'jam' => $jam,
+			'link'=> $link,
+		);
+
+		$this->m->Update($data);
+		redirect('Admin/Jadwal');
+
+	}
+
+	public function HapusJadwal($id_jadwal)
+	{
+
+		$where = array('id_jadwal' => $id_jadwal);
+		$query = $this->db->query("SELECT nidn FROM jadwal_perwalian WHERE id_jadwal = '$id_jadwal'");
+		$nidn = $query->row()->nidn;
+
+		$data = array(
+			'nidn'=> $nidn,
+			'status_jp' => null,
+		);
+		$this->m->delete($where);
+		$this->m->hapusJp($data);
+		redirect('Admin/Jadwal');
+	}
+
+	
 
 	public function sessions()
 	{
 		print_r($this->session->userdata());
 	}
+
+
+	
 }

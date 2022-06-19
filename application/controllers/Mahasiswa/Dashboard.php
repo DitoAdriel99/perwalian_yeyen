@@ -24,28 +24,25 @@ class Dashboard extends CI_Controller
 		$queryPerwalian = $this->m->getDataPerwalian($nim);
 		$queryJadwal = $this->m->getJadwalPerwalian($angkatan);
 		$queryUser = $this->m->getUser($nim);
-		// print_r($queryUser);
-		// die;
-
 		$cekJadwal = $this->m->cekJadwal();
-
-		// print_r($cekJadwal);
-		// die;
+		$getidperwalian = $this->m->getidperwalian($nim);
+		$getcatatan = $this->m->getcatatan($getidperwalian);
+		$getKrs = $this->m->getKrs($angkatan);
+		$cekKrs = $this->m->cekKrs($angkatan);
+		
 
 		$data = array(
 			'perwalian' => $queryPerwalian,
 			'jadwal' => $queryJadwal,
 			'cek' => $cekJadwal,
 			'user' => $queryUser,
+			'catatan' => $getcatatan,
+			'krs' => $getKrs,
+			'cekkrs' => $cekKrs,
 		);
-
-		// print_r($data);
-		// die;
-
 		$this->load->view('Template/header');
 		$this->load->view('Mahasiswa/DashboardMahasiswa',$data);
 		$this->load->view('Template/footer');
-
 	}
 
 	public function ViewJadwalPerwalian()

@@ -43,4 +43,22 @@ class Mahasiswa_model extends CI_Model
 		$this->db->where('nim', $data['nim']);
 		$this->db->update($table, $data);
 	}
+
+	public function hapususer ($nim)
+	{
+		$this->db->where('nim', $nim);
+		$this->db->delete('users');
+
+		$this->db->where('nim', $nim);
+		$this->db->delete('perwalian');
+	}
+
+	public function verifikasi($data)
+	{
+		$this->db->where('nim', $data['nim']);
+		$this->db->update('users', $data);
+	}
+
+	
 }
+

@@ -16,11 +16,20 @@ class Krs_model extends CI_Model
 		return $query->result();
 	}
 
+	public function getAngkatan()
+	{
+		$query = $this->db->select('*')
+			->from('krs_prediksi')
+			->get();
+		return $query->result();
+	}
+
 	public function uploadKrs($data)
 	{
-		$this->db->where('nim', $data['nim']);
-		$this->db->update('users', $data);
+		$this->db->insert('krs_prediksi',$data);
 	}
+
+	
 
 	
 

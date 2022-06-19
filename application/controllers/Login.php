@@ -15,8 +15,6 @@ class Login extends CI_Controller
 
 	public function index()
 	{
-		// echo substr("72180225",2,2)."<br>";
-		// die;
 		$this->load->view('viewLogin');
 	}
 
@@ -24,20 +22,20 @@ class Login extends CI_Controller
 	{
 		$user = $this->input->post('email');
 		$pass = $this->input->post('password');
-
 		$cekLogin = $this->m->login($user, $pass);
-
 		if ($cekLogin) {
 			foreach ($cekLogin as $row);
 			$this->session->set_userdata('id_user', $row->id_user);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('no_hp', $row->no_hp);
 			$this->session->set_userdata('nidn', $row->nidn);
+			$this->session->set_userdata('profile', $row->profile);
 			$this->session->set_userdata('nim', $row->nim);
 			$this->session->set_userdata('angkatan', $row->angkatan);
 			$this->session->set_userdata('email', $row->email);
 			$this->session->set_userdata('roles', $row->roles);
-
+			$this->session->set_userdata('status_akun', $row->status_akun);
+			$this->session->set_userdata('krs_prediksi', $row->krs_prediksi);
 			if ($this->session->userdata('roles') == ('1')) {
 				redirect('Mahasiswa/Dashboard');
 			} elseif ($this->session->userdata('roles') == ('2')) {

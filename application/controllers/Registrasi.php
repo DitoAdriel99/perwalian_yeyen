@@ -30,7 +30,7 @@ class Registrasi extends CI_Controller
 		$email = $this->input->post('email');
 		$no_hp = $this->input->post('no_hp');
 		$password = $this->input->post('password');
-		$ipk = random_string('numeric', 1);
+		$ipk = rand(1,4);
 		
 		$tahun = substr($nim,2,2);
 		$angkatan = "20".$tahun;
@@ -45,7 +45,7 @@ class Registrasi extends CI_Controller
 			$cek = $sql->num_rows();
 			if ($cek > 0) {
 
-				$config['upload_path']   = './gambar_mahasiswa/';
+				$config['upload_path']   = './profile/';
 				$config['allowed_types'] = 'gif|jpg|png|pdf';
 				$config['max_size']      = 9000;
 				$config['max_width']     = 9000;
@@ -77,6 +77,8 @@ class Registrasi extends CI_Controller
 					'profile' => $dataUpload['upload_data']['file_name'],
 					'roles' => 1
 				);
+				// print_r($data);
+				// die;
 
 				$this->m->regis($data, 'users');
 

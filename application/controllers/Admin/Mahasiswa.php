@@ -21,14 +21,12 @@ class Mahasiswa extends CI_Controller
 	{
 		$queryGetDataDosen  = $this->m->getDataDosen();
 		$queryGetDataMahasiswa  = $this->m->getDataMahasiswa();
-
 		$data = array(
 			'dosen' => $queryGetDataDosen,
 			'mahasiswa' => $queryGetDataMahasiswa,
 		);
 		// print_r($data);
 		// die();
-
 		$this->load->view('Template/header');
 		$this->load->view('Admin/V_mahasiswa', $data);
 		$this->load->view('Template/footer');
@@ -38,6 +36,13 @@ class Mahasiswa extends CI_Controller
 	{
 		$queryGetDataDosen  = $this->m->getDataDosen();
 		echo json_encode($queryGetDataDosen);
+	}
+
+	public function delete($nim)
+	{
+		$this->m->hapususer($nim);
+		redirect('Admin/Mahasiswa');
+
 	}
 
 
@@ -63,24 +68,29 @@ class Mahasiswa extends CI_Controller
 			'nim' => $nidn,
 			'status_perwalian' => 1,
 		);
-		// print_r($data);
-		// die;
+
 
 		$this->m->insertData($data, 'perwalian');
 		$this->m->ubahStatus($sts, 'users');
 
-		// $status = 1;
-
-		// $this->m->status($status,'users',$nim);
-
-
-		// $status = 1;
-		// $this->m->status($status,$nim);
 		redirect('Admin/Mahasiswa');
+	}
+
+	public function verifikasi($nim)
+	{
+		$data = array(
+			'nim' => $nim,
+			'status_akun' => 1,
+		);
+		$this->m->verifikasi($data);
+		redirect('Admin/Mahasiswa');
+
 	}
 
 	public function sessions()
 	{
 		print_r($this->session->userdata());
 	}
+
+	
 }

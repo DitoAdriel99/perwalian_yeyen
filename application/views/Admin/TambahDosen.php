@@ -1,15 +1,19 @@
-<h1>Tambah Dosen</h1>
+<h1>Registrasi Dosen</h1>
 <div class="col-12 grid-margin stretch-card">
 	<div class="card">
 		<div class="card-body">
 		<p class="text-primary"><?php echo $this->session->flashdata('message'); ?></p>
 
-			<h4 class="card-title">Basic form elements</h4>
-			<p class="card-description"> Basic form elements </p>
+			<h4 class="card-title">Silahkan menambahkan  Akun Dosen! </h4>
+			<!-- <p class="card-description"> Basic form elements </p> -->
 			<form class="forms-sample" method="post" action="<?php echo base_url(); ?>Admin/TambahDosen/add" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="exampleInputName1">NIDN</label>
 					<input type="text" class="form-control" name="nidn" placeholder="nidn" required>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputName1">Email</label>
+					<input type="text" class="form-control" name="email" placeholder="email" required>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputName1">password</label>

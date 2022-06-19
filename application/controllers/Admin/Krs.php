@@ -19,59 +19,52 @@ class Krs extends CI_Controller
 
 	public function index()
 	{
-		$queryGetDataMahasiswa['mahasiswa']  = $this->m->getDataMahasiswa();
+		// $queryGetDataMahasiswa['mahasiswa']  = $this->m->getDataMahasiswa();
+
+		$queryGetAngkatan['angkatan'] = $this->m->getAngkatan();
+
+		// print_r($queryGetAngkatan);
+		// die;
 
 		$this->load->view('Template/header');
-		$this->load->view('Admin/TambahKrs', $queryGetDataMahasiswa);
+		$this->load->view('Admin/TambahKrs',$queryGetAngkatan);
+		$this->load->view('Template/footer');
+	}
+
+	public function halamanUploadKrs()
+	{
+		$this->load->view('Template/header');
+		$this->load->view('Admin/UploadKrs');
 		$this->load->view('Template/footer');
 	}
 
 	public function uploadKrs()
 	{
-		// print_r($_FILES);
-		// die;
-		$nim = $this->input->post('nim');
+		$angkatan = $this->input->post('angkatan');
 		$krs = $this->input->post('krs');
-
 		$config['upload_path']   = './krs_prediksi/';
-		$config['allowed_types'] = 'gif|jpg|png|pdf';
+		$config['allowed_types'] = 'pdf|xlsx|png';
 		$config['max_size']      = 9000;
 		$config['max_width']     = 9000;
 		$config['max_height']    = 9000;
 		$this->load->library('upload', $config);
-
 		if (!$this->upload->do_upload('krs_prediksi')) {
-			$error = $this->upload->display_errors();
-			// $this->load->view('upload_form', $error);
-			$result = array(
-				'error' => 1,
-				'data' => $error
-			);
-			echo json_encode($result);
-			exit;
+			$this->session->set_flashdata('peringatan', 'Kumpulkan KRS Prediksi dalam bentuk Excel ya');
+			redirect('Admin/Krs/halamanUploadKrs');
 		} else {
 			$dataUpload = array('upload_data' => $this->upload->data());
-			// $image = $dataUpload['upload_data']['file_name'];
 		}
-
 		$data = array(
-			'nim' => $nim,
+			'angkatan' => $angkatan,
 			'krs_prediksi' => $dataUpload['upload_data']['file_name'],
 		);
-
 		$sts = array(
-			'nim' => $nim,
+			'angkatan' => $angkatan,
 			'status_krs' => 1
 		);
-
-		// print_r($data);
-		// die;
-
-		$this->m->uploadKrs($data,'users');
+		$this->m->uploadKrs($data, 'users');
+		$this->session->set_flashdata('message', 'KRS terupload');
 		redirect('Admin/Krs');
-
-
-		// echo $nim;
 	}
 
 	public function sessions()

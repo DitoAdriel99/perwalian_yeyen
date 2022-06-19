@@ -16,4 +16,15 @@ class Dashboard_model extends CI_Model
 			->get();
 		return $query->result();
 	}
+
+	public function getChart()
+	{
+		$query = $this->db->select('angkatan,count(*) as total')
+			->from('users')
+			->group_by('angkatan')
+			// ->order_by('count(*)')
+			->where('roles',1)
+			->get();
+		return $query->result();
+	}
 }

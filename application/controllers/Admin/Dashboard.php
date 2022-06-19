@@ -19,16 +19,22 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		$monitoring['data'] = $this->m->getData();
-
-		// print_r($monitoring);
-		// die;
+		$chart = $this->m->getChart();
+		$monitoring = $this->m->getData();
+		$data = array(
+			'chart' => $chart,
+			'monitoring' => $monitoring,
+		);
 		$this->load->view('Template/header');
-		$this->load->view('Admin/DashboardAdmin',$monitoring);
+		$this->load->view('Admin/DashboardAdmin',$data);
 		$this->load->view('Template/footer');
 	}
 
-
+	public function chart()
+	{
+		$chart = $this->m->getChart();
+		echo json_encode($chart);
+	}
 	public function sessions()
 	{
 		print_r($this->session->userdata());

@@ -4,9 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SiP</title>
+    <title>Perwalian SI-UKDW</title>
     <!-- plugins:css -->
 	<script src="<?= base_url() ?>assets/js/jquery-1.11.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/css/vendor.bundle.base.css">
@@ -37,7 +38,13 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
+								<?php if($this->session->userdata('profile') == null){?>
                   <img class="img-xs rounded-circle " src="<?= base_url() ?>assets/images/faces/face15.jpg" alt="">
+
+
+									<?php }else {?>
+										<img class="img-xs rounded-circle " src="<?= base_url() ?>profile/<?= $this->session->userdata('profile'); ?>" alt="">
+									<?php }?>
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
@@ -59,107 +66,95 @@
             </div>
           </li>
           <li class="nav-item nav-category">
-            <span class="nav-link">Navigation</span>
+            <span class="nav-link"  style="color: white;"><h4>MENU</h4></span>
           </li>
+					<!-- MAHASISWA -->
 					<?php if($this->session->userdata('roles') == 1){ ?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= base_url('/Mahasiswa/Dashboard/') ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-home"></i>
               </span>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title" style="color: white;">Beranda</span>
             </a>
           </li>
 					<li class="nav-item menu-items">
             <a class="nav-link" href="<?= base_url('/Mahasiswa/DosenWali/') ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
+                <i class="mdi mdi-account-settings"></i>
               </span>
-              <span class="menu-title">Info Dosen Wali</span>
+              <span class="menu-title" style="color: white;">Info Dosen Wali</span>
             </a>
           </li>
+					<li class="nav-item menu-items">
+            <a class="nav-link" href="<?= base_url('/Mahasiswa/ProfileMhs/') ?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-account"></i>
+              </span>
+              <span class="menu-title" style="color: white;">Profil</span>
+            </a>
+          </li>
+
+					<!-- DOSEN -->
 					<?php }elseif($this->session->userdata('roles') == 2){?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= base_url('/Dosen/Dashboard/') ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-home"></i>
               </span>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">Beranda</span>
             </a>
           </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= base_url('/Dosen/Dashboard/ViewJadwal') ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
+                <i class="mdi mdi-calendar-text"></i>
               </span>
               <span class="menu-title">Jadwal Perwalian</span>
             </a>
           </li>
 					<?php }else{?>
-          <!-- <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/charts/chartjs.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Charts</span>
-            </a>
-          </li> -->
+
+         <!-- ADMIN -->
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= base_url('/Admin/Dashboard') ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
+                <i class="mdi mdi-home"></i>
               </span>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title"  style="color: white;">Beranda</span>
             </a>
           </li>
 					<li class="nav-item menu-items">
 						<a class="nav-link" href="<?= base_url('/Admin/Mahasiswa/') ?>">
 							<span class="menu-icon">
-								<i class="mdi mdi-file-document-box"></i>
+								<i class="mdi mdi-account"></i>
 							</span>
-							<span class="menu-title">Mahasiswa</span>
+							<span class="menu-title"  style="color: white;">Mahasiswa</span>
 						</a>
 					</li>
-          <!-- <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
-              </span>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-              </ul>
-            </div>
-          </li> -->
+          
 					<li class="nav-item menu-items">
 						<a class="nav-link" href="<?= base_url('/Admin/TambahDosen/') ?>">
 							<span class="menu-icon">
-								<i class="mdi mdi-file-document-box"></i>
+								<i class="mdi mdi-account-settings"></i>
 							</span>
-							<span class="menu-title">Dosen</span>
+							<span class="menu-title" style="color: white;">Dosen</span>
 						</a>
 					</li>
-					<li class="nav-item menu-items">
+					<!-- <li class="nav-item menu-items">
 						<a class="nav-link" href="<?= base_url('/Admin/Jadwal/') ?>">
               <span class="menu-icon">
-								<i class="mdi mdi-file-document-box"></i>
+								<i class="mdi mdi-calendar-text"></i>
               </span>
               <span class="menu-title">Jadwal Perwalian</span>
             </a>
-          </li>
+          </li> -->
 					<li class="nav-item menu-items">
 						<a class="nav-link" href="<?= base_url('/Admin/Krs') ?>">
 							<span class="menu-icon">
 								<i class="mdi mdi-file-document-box"></i>
 							</span>
-							<span class="menu-title">Krs Prediksi</span>
+							<span class="menu-title"  style="color: white;">Krs Prediksi</span>
 						</a>
 					</li>
 					<?php } ?>
@@ -180,7 +175,13 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
+									<?php if($this->session->userdata('profile') == null){?>
                     <img class="img-xs rounded-circle" src="<?= base_url() ?>assets/images/faces/face15.jpg" alt="">
+
+									<?php }else {?>
+                    <img class="img-xs rounded-circle" src="<?= base_url() ?>profile/<?= $this->session->userdata('profile')?>" alt="">
+
+									<?php }?>
                     <p class="mb-0 d-none d-sm-block navbar-profile-name"><?= $this->session->userdata('username');?></p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -188,7 +189,7 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <!-- <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>
@@ -197,21 +198,21 @@
                     <div class="preview-item-content">
                       <p class="preview-subject mb-1">Settings</p>
                     </div>
-                  </a>
+                  </a> -->
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a class="dropdown-item preview-item" href="<?= base_url() .'login/logout'?>">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
                       </div>
                     </div>
                     <div class="preview-item-content">
-										<p class="preview-subject mb-1"><a href="<?=base_url() . 'login/logout' ?>">Log Out</a></p>
+                      <p class="preview-subject mb-1">Log out</p>
                     </div>
                   </a>
-                  <div class="dropdown-divider"></div>
+                  <!-- <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">Advanced settings</p>
-                </div>
+                </div> -->
               </li>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

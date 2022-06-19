@@ -20,7 +20,6 @@ class TambahDosen extends CI_Controller
 	public function index()
 	{
 		$queryGetDataDosen  = $this->m->getDataDosen();
-
 		$data = array(
 			'dosen' => $queryGetDataDosen,
 		);
@@ -40,6 +39,7 @@ class TambahDosen extends CI_Controller
 	{
 		$nidn = $this->input->post('nidn');
 		$pj = $this->input->post('pj_angkatan');
+		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
 		$sql_nidn = $this->db->query("SELECT nidn FROM dosen WHERE nidn='$nidn'");
@@ -51,7 +51,7 @@ class TambahDosen extends CI_Controller
 			// print_r($biodata);
 			// die;
 			// print_r($ambil);
-			$config['upload_path']   = './gambar_dosen/';
+			$config['upload_path']   = './profile/';
 			$config['allowed_types'] = 'gif|jpg|png|pdf';
 			$config['max_size']      = 9000;
 			$config['max_width']     = 9000;
@@ -75,7 +75,7 @@ class TambahDosen extends CI_Controller
 			$data = array(
 				'nidn' => $nidn,
 				'username' => $biodata->nama_dosen,
-				'email' => $biodata->email,
+				'email' => $email,
 				'password' => $password,
 				'no_hp' => $biodata->no_hp,
 				'roles' => 2,
@@ -118,7 +118,7 @@ class TambahDosen extends CI_Controller
 		$password = $this->input->post('password');
 		$no_hp = $this->input->post('no_hp');
 
-		$config['upload_path']   = './gambar_dosen/';
+		$config['upload_path']   = './profile/';
 		$config['allowed_types'] = 'gif|jpg|png|pdf';
 		$config['max_size']      = 9000;
 		$config['max_width']     = 9000;
